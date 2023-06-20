@@ -1,5 +1,5 @@
 # Goals
-
+### A goal without a plan is just a dream; Goals helps you get closer to achieving your dreams.
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
