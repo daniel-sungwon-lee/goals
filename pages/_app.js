@@ -34,6 +34,29 @@ body {
   font-family: ${Acne.style.fontFamily} !important;
 }
 
+::selection {
+  background: #B19CD8;
+  color: white;
+}
+
+main {
+  min-height: 100vh;
+}
+
+
+.logo {
+  font-size: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.paper {
+  border-radius: 0.5rem;
+  width: calc(100%/3);
+  min-height: 70vh;
+  margin: 0 1.5rem;
+  text-align: center;
+}
 `
 
 export default function App({ Component, pageProps }) {
