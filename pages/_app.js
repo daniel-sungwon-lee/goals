@@ -23,7 +23,7 @@ const globalCss = `
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: ${Acne.style.fontFamily} !important;
+  font-family: ${Acne.style.fontFamily};
 }
 
 html,
@@ -31,11 +31,11 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   background: #E5A490;
-  font-family: ${Acne.style.fontFamily} !important;
+  font-family: ${Acne.style.fontFamily};
 }
 
 ::selection {
-  background: #B19CD8;
+  background: #FF6978;
   color: white;
 }
 
