@@ -1,4 +1,5 @@
 import { ThemeProvider, createTheme } from '@mui/material/styles'
+import localFont from 'next/font/local'
 
 const theme = createTheme({
   palette: {
@@ -13,11 +14,16 @@ const theme = createTheme({
   }
 })
 
+const Acne = localFont({ src: '../public/fonts/Nordique-Pro-Bold.otf' })
+const AcneSemi = localFont({ src: '../public/fonts/NordiquePro-Semibold.otf' })
+const AcneRegular = localFont({ src: '../public/fonts/NordiquePro-Regular.otf' })
+
 const globalCss = `
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: ${Acne.style.fontFamily} !important;
 }
 
 html,
@@ -25,6 +31,7 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   background: #E5A490;
+  font-family: ${Acne.style.fontFamily} !important;
 }
 
 `
