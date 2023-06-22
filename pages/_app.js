@@ -34,6 +34,23 @@ body {
   font-family: ${Acne.style.fontFamily};
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 10px;
+  border: 2.5px transparent solid;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  border: 0;
+}
+
 ::selection {
   background: #FF6978;
   color: white;
