@@ -52,10 +52,33 @@ main {
 
 .paper {
   border-radius: 0.5rem;
-  width: calc(100%/3);
+  width: 100%;
   min-height: 70vh;
-  margin: 0 1.5rem;
+  margin: 0 1.5rem 2rem;
   text-align: center;
+}
+
+
+.MuiTypography-root {
+  font-family: ${Acne.style.fontFamily};
+}
+
+.MuiFormLabel-root {
+  font-family: ${Acne.style.fontFamily}
+}
+.MuiInputBase-input {
+  font-family: ${Acne.style.fontFamily}
+}
+
+.MuiButton-root {
+  font-family: ${Acne.style.fontFamily}
+}
+
+.MuiPickersDay-root {
+  font-family: ${AcneSemi.style.fontFamily};
+}
+.MuiPickersYear-yearButton {
+  font-family: ${AcneSemi.style.fontFamily};
 }
 `
 

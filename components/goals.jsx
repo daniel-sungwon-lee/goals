@@ -5,7 +5,7 @@ import localFont from 'next/font/local'
 
 const AcneSemi = localFont({ src: '../public/fonts/NordiquePro-Semibold.otf' })
 
-export default function Goals ({type}) {
+export default function Goals ({ type, setOpen, setOpenedType }) {
   const [list, setList] = useState([])
 
   return (
@@ -28,7 +28,8 @@ export default function Goals ({type}) {
          sx={list.length > 0 ? {} : {minHeight: '75%'}}>
           <Fab color="secondary" variant="extended" className={AcneSemi.className}
            sx={{textTransform: 'none', color: 'white', fontSize: '20px'}} onClick={() => {
-            console.log(type)
+            setOpen(true)
+            setOpenedType(type)
            }}>
             <AddRounded />
             Add goal
