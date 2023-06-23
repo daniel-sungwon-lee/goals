@@ -10,6 +10,7 @@ const AcneRegular = localFont({ src: '../public/fonts/NordiquePro-Regular.otf' }
 export default function Home() {
   const [open, setOpen] = useState(false)
   const [openedType, setOpenedType] = useState('')
+  const [dataUpdated, setDataUpdated] = useState(false)
 
   useEffect(() => {
     if(!JSON.parse(localStorage.getItem('goalsData'))) {
@@ -22,12 +23,16 @@ export default function Home() {
       <h1 className='logo mb-3'>Goals</h1>
 
       <div className='d-flex justify-content-between mb-4'>
-        <Goals type={'Short term'} setOpen={setOpen} setOpenedType={setOpenedType} />
-        <Goals type={'Medium term'} setOpen={setOpen} setOpenedType={setOpenedType} />
-        <Goals type={'Long term'} setOpen={setOpen} setOpenedType={setOpenedType} />
+        <Goals type={'Short term'} setOpen={setOpen} setOpenedType={setOpenedType}
+         dataUpdated={dataUpdated} setDataUpdated={setDataUpdated} />
+        <Goals type={'Medium term'} setOpen={setOpen} setOpenedType={setOpenedType}
+         dataUpdated={dataUpdated} setDataUpdated={setDataUpdated} />
+        <Goals type={'Long term'} setOpen={setOpen} setOpenedType={setOpenedType}
+         dataUpdated={dataUpdated} setDataUpdated={setDataUpdated} />
       </div>
 
-      <GoalDialog open={open} setOpen={setOpen} openedType={openedType} />
+      <GoalDialog open={open} setOpen={setOpen} openedType={openedType}
+       setDataUpdated={setDataUpdated} />
     </main>
   )
 }

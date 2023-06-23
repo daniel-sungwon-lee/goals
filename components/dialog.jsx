@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { AddRounded, CloseRounded } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 
-export default function GoalDialog ({ open, setOpen, openedType }) {
+export default function GoalDialog ({ open, setOpen, openedType, setDataUpdated }) {
   const [goalCategory, setGoalCategory] = useState('')
   const [goal, setGoal] = useState('')
   const [goalDate, setGoalDate] = useState(dayjs())
@@ -29,11 +29,19 @@ export default function GoalDialog ({ open, setOpen, openedType }) {
     e.preventDefault()
     setDialogLoading(true)
 
+    const goalId = () => {
+      const S4 = () => {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+      };
+      return (S4() + S4() + S4() + S4() + S4() + S4() + S4() + S4());
+    }
+
     const addedGoal = {
-      goalCategory,
+      id: goalId(),
+      category: goalCategory,
       goal,
-      goalDate,
-      goalType: openedType
+      date: goalDate,
+      type: openedType
     }
 
     const currentData = JSON.parse(localStorage.getItem('goalsData'))
@@ -42,6 +50,7 @@ export default function GoalDialog ({ open, setOpen, openedType }) {
     setTimeout(() => {
       setDialogLoading(false)
       setOpen(false)
+      setDataUpdated(true)
       setGoalCategory('')
       setGoal('')
       setGoalDate(dayjs())
