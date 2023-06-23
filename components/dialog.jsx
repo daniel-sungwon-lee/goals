@@ -27,6 +27,25 @@ export default function GoalDialog ({ open, setOpen, openedType }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setDialogLoading(true)
+
+    const addedGoal = {
+      goalCategory,
+      goal,
+      goalDate,
+      goalType: openedType
+    }
+
+    const currentData = JSON.parse(localStorage.getItem('goalsData'))
+    localStorage.setItem('goalsData', JSON.stringify([...currentData, addedGoal]))
+
+    setTimeout(() => {
+      setDialogLoading(false)
+      setOpen(false)
+      setGoalCategory('')
+      setGoal('')
+      setGoalDate(dayjs())
+    }, 333)
   }
 
   return (

@@ -1,7 +1,7 @@
 import GoalDialog from '@/components/dialog'
 import Goals from '@/components/goals'
 import localFont from 'next/font/local'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Acne = localFont({ src: '../public/fonts/Nordique-Pro-Bold.otf' })
 const AcneSemi = localFont({ src: '../public/fonts/NordiquePro-Semibold.otf' })
@@ -10,6 +10,12 @@ const AcneRegular = localFont({ src: '../public/fonts/NordiquePro-Regular.otf' }
 export default function Home() {
   const [open, setOpen] = useState(false)
   const [openedType, setOpenedType] = useState('')
+
+  useEffect(() => {
+    if(!JSON.parse(localStorage.getItem('goalsData'))) {
+      localStorage.setItem('goalsData', JSON.stringify([]))
+    }
+  })
 
   return (
     <main className={`container ${Acne.className}`}>
