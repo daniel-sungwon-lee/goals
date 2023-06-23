@@ -4,7 +4,7 @@ import { Box, Button, Card, CardActions, CardContent, Collapse, Fab, Fade,
 import { useEffect, useState } from "react";
 import localFont from 'next/font/local'
 import dayjs from "dayjs";
-import Plan from "./plan";
+import Plans from "./plans";
 
 const AcneSemi = localFont({ src: '../public/fonts/NordiquePro-Semibold.otf' })
 
@@ -55,7 +55,7 @@ export default function Goals ({ type, setOpen, setOpenedType, dataUpdated, setD
                       </CardContent>
 
                       <Collapse in={show === id}>
-                        <Plan />
+                        <Plans goalId={id} show={show} />
                       </Collapse>
 
                       <CardActions className="d-flex justify-content-between">

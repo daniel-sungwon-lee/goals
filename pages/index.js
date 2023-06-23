@@ -17,6 +17,9 @@ export default function Home() {
     if(!JSON.parse(localStorage.getItem('goalsData'))) {
       localStorage.setItem('goalsData', JSON.stringify([]))
     }
+    if (!JSON.parse(localStorage.getItem('plansData'))) {
+      localStorage.setItem('plansData', JSON.stringify([]))
+    }
   })
 
   return (
