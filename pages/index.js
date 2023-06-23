@@ -1,5 +1,6 @@
 import GoalDialog from '@/components/dialog'
 import Goals from '@/components/goals'
+import { Fade } from '@mui/material'
 import localFont from 'next/font/local'
 import { useEffect, useState } from 'react'
 
@@ -19,20 +20,22 @@ export default function Home() {
   })
 
   return (
-    <main className={`container ${Acne.className}`}>
-      <h1 className='logo mb-3'>Goals</h1>
+    <Fade in>
+      <main className={`container ${Acne.className}`}>
+        <h1 className='logo mb-3'>Goals</h1>
 
-      <div className='d-flex justify-content-between mb-4'>
-        <Goals type={'Short term'} setOpen={setOpen} setOpenedType={setOpenedType}
-         dataUpdated={dataUpdated} setDataUpdated={setDataUpdated} />
-        <Goals type={'Medium term'} setOpen={setOpen} setOpenedType={setOpenedType}
-         dataUpdated={dataUpdated} setDataUpdated={setDataUpdated} />
-        <Goals type={'Long term'} setOpen={setOpen} setOpenedType={setOpenedType}
-         dataUpdated={dataUpdated} setDataUpdated={setDataUpdated} />
-      </div>
+        <div className='d-flex justify-content-between mb-4'>
+          <Goals type={'Short term'} setOpen={setOpen} setOpenedType={setOpenedType}
+          dataUpdated={dataUpdated} setDataUpdated={setDataUpdated} />
+          <Goals type={'Medium term'} setOpen={setOpen} setOpenedType={setOpenedType}
+          dataUpdated={dataUpdated} setDataUpdated={setDataUpdated} />
+          <Goals type={'Long term'} setOpen={setOpen} setOpenedType={setOpenedType}
+          dataUpdated={dataUpdated} setDataUpdated={setDataUpdated} />
+        </div>
 
-      <GoalDialog open={open} setOpen={setOpen} openedType={openedType}
-       setDataUpdated={setDataUpdated} />
-    </main>
+        <GoalDialog open={open} setOpen={setOpen} openedType={openedType}
+        setDataUpdated={setDataUpdated} />
+      </main>
+    </Fade>
   )
 }
