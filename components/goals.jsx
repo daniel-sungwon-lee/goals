@@ -47,7 +47,9 @@ export default function Goals ({ type, setOpen, setOpenedType, dataUpdated, setD
                           {category}
                         </Box>
                         <Box className='h4'>{goal}</Box>
-                        <Box>{dayjs(date).format('MMMM, DD YYYY')}</Box>
+                        <Box sx={{color: dayjs() < dayjs(date) ? '' : '#ff0000'}}>
+                          {dayjs(date).format('MMMM DD, YYYY')}
+                        </Box>
                       </CardContent>
 
                       <CardActions className="d-flex justify-content-between">
