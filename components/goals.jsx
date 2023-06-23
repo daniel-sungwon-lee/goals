@@ -1,14 +1,16 @@
-import { AddRounded, DeleteRounded } from "@mui/icons-material";
-import { Box, Button, Card, CardActions, CardContent, Fab, Fade,
+import { AddRounded, DeleteRounded, ExpandLessRounded, ExpandMoreRounded } from "@mui/icons-material";
+import { Box, Button, Card, CardActions, CardContent, Collapse, Fab, Fade,
          IconButton, Paper } from "@mui/material";
 import { useEffect, useState } from "react";
 import localFont from 'next/font/local'
 import dayjs from "dayjs";
+import Plan from "./plan";
 
 const AcneSemi = localFont({ src: '../public/fonts/NordiquePro-Semibold.otf' })
 
 export default function Goals ({ type, setOpen, setOpenedType, dataUpdated, setDataUpdated }) {
   const [list, setList] = useState([])
+  const [show, setShow] = useState(null)
 
   useEffect(() => {
     const goalsData = JSON.parse(localStorage.getItem('goalsData'))
@@ -48,14 +50,29 @@ export default function Goals ({ type, setOpen, setOpenedType, dataUpdated, setD
                         </Box>
                         <Box className='h4'>{goal}</Box>
                         <Box sx={{color: dayjs() < dayjs(date) ? '' : '#ff0000'}}>
-                          {dayjs(date).format('MMMM DD, YYYY')}
+                          By: {dayjs(date).format('MMMM DD, YYYY')}
                         </Box>
                       </CardContent>
 
+                      <Collapse in={show === id}>
+                        <Plan />
+                      </Collapse>
+
                       <CardActions className="d-flex justify-content-between">
-                        <Button variant="contained" color="secondary" sx={{color: 'white'}}
-                          size="small">
-                          Plan
+                        <Button sx={{color: 'white', textTransform: 'none'}} onClick={() => {
+                          show === id ? setShow(null)
+                                      : setShow(id)
+                         }}>
+                          {
+                            show === id ? <>
+                                            <ExpandLessRounded />
+                                            <span>Hide plan</span>
+                                          </>
+                                        : <>
+                                            <ExpandMoreRounded />
+                                            <span>Show plan</span>
+                                          </>
+                          }
                         </Button>
                         <IconButton color="error" onClick={() => handleDelete(id)}>
                           <DeleteRounded />
