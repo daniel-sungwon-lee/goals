@@ -59,7 +59,8 @@ export default function Goals ({ type, setOpen, setOpenedType, dataUpdated, setD
                       </Collapse>
 
                       <CardActions className="d-flex justify-content-between">
-                        <Button sx={{color: 'white', textTransform: 'none'}} onClick={() => {
+                        <Button sx={{color: 'white', textTransform: 'none',
+                         fontSize: '16px'}} onClick={() => {
                           show === id ? setShow(null)
                                       : setShow(id)
                          }}>

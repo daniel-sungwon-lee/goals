@@ -1,6 +1,7 @@
-import { AddRounded, CloseRounded, DoneRounded } from "@mui/icons-material";
+import { AddRounded, CloseRounded, DeleteRounded, DoneRounded } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
-import { Box, Button, CardContent, Collapse, Fade, Paper, TextField } from "@mui/material";
+import { Box, Button, CardContent, Collapse, Fade, IconButton, Paper,
+         TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 
 export default function Plans ({goalId, show}) {
@@ -50,6 +51,14 @@ export default function Plans ({goalId, show}) {
     }, 333)
   }
 
+  const handleDelete = (id) => {
+    const index = plans.findIndex(p => p.id === id)
+    const updatedPlans = plans.toSpliced(index, 1)
+    setPlans(updatedPlans)
+
+    localStorage.setItem('plansData', JSON.stringify(updatedPlans))
+  }
+
   return (
     <CardContent>
       <Box>
@@ -60,7 +69,13 @@ export default function Plans ({goalId, show}) {
             if(p.goalId === goalId) {
               return (
                 <Fade in key={id}>
-                  <Paper sx={{marginBottom: '1rem'}}>
+                  <Paper sx={{marginBottom: '1rem', position: 'relative'}}>
+                    <IconButton color="error" sx={{
+                      position: 'absolute', top: '0.25rem', left: '0.25rem'
+                     }} size='small' onClick={() => handleDelete(id)}>
+                      <DeleteRounded sx={{fontSize: '16px'}} />
+                    </IconButton>
+
                     <Box className='p-3'>{plan}</Box>
                   </Paper>
                 </Fade>
@@ -72,10 +87,10 @@ export default function Plans ({goalId, show}) {
 
       <Collapse in={showNewPlan}>
         <Paper>
-          <form onSubmit={handleSubmit}>
+          <form className="d-flex flex-column align-items-center" onSubmit={handleSubmit}>
             <TextField value={plan} id="goal" required disabled={loading}
               variant="filled" label="Plan" onChange={(e) => setPlan(e.target.value)}
-              InputLabelProps={{ required: false }} sx={{ margin: '1rem 0' }}
+              InputLabelProps={{ required: false }} sx={{margin: '1rem 0', width: '85%'}}
               multiline minRows={2} color="secondary" />
 
             <LoadingButton type="submit" loading={loading} sx={{textTransform: 'none',
