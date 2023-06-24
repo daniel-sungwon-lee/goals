@@ -24,20 +24,22 @@ export default function Home() {
 
   return (
     <Fade in>
-      <main className={`container ${Acne.className}`}>
-        <h1 className='logo mb-3'>Goals</h1>
+      <main className={Acne.className}>
+        <div className='container'>
+          <h1 className='logo mb-3'>Goals</h1>
 
-        <div className='d-flex justify-content-between mb-4 wrap'>
-          <Goals type={'Short term'} setOpen={setOpen} setOpenedType={setOpenedType}
-           dataUpdated={dataUpdated} setDataUpdated={setDataUpdated} />
-          <Goals type={'Medium term'} setOpen={setOpen} setOpenedType={setOpenedType}
-           dataUpdated={dataUpdated} setDataUpdated={setDataUpdated} />
-          <Goals type={'Long term'} setOpen={setOpen} setOpenedType={setOpenedType}
-           dataUpdated={dataUpdated} setDataUpdated={setDataUpdated} />
+          <div className='d-flex justify-content-between mb-4 wrap'>
+            <Goals type={'Short term'} setOpen={setOpen} setOpenedType={setOpenedType}
+             dataUpdated={dataUpdated} setDataUpdated={setDataUpdated} />
+            <Goals type={'Medium term'} setOpen={setOpen} setOpenedType={setOpenedType}
+             dataUpdated={dataUpdated} setDataUpdated={setDataUpdated} />
+            <Goals type={'Long term'} setOpen={setOpen} setOpenedType={setOpenedType}
+             dataUpdated={dataUpdated} setDataUpdated={setDataUpdated} />
+          </div>
+
+          <GoalDialog open={open} setOpen={setOpen} openedType={openedType}
+           setOpenedType={setOpenedType} setDataUpdated={setDataUpdated} />
         </div>
-
-        <GoalDialog open={open} setOpen={setOpen} openedType={openedType}
-         setOpenedType={setOpenedType} setDataUpdated={setDataUpdated} />
       </main>
     </Fade>
   )

@@ -29,7 +29,6 @@ const globalCss = `
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
   background: #E5A490;
   font-family: ${Acne.style.fontFamily};
 }
