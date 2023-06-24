@@ -2,7 +2,7 @@ import GoalDialog from '@/components/dialog'
 import Goals from '@/components/goals'
 import { Fade } from '@mui/material'
 import localFont from 'next/font/local'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 const Acne = localFont({ src: '../public/fonts/Nordique-Pro-Bold.otf' })
 const AcneSemi = localFont({ src: '../public/fonts/NordiquePro-Semibold.otf' })
@@ -12,15 +12,6 @@ export default function Home() {
   const [open, setOpen] = useState(false)
   const [openedType, setOpenedType] = useState('')
   const [dataUpdated, setDataUpdated] = useState(false)
-
-  useEffect(() => {
-    if(!JSON.parse(localStorage.getItem('goalsData'))) {
-      localStorage.setItem('goalsData', JSON.stringify([]))
-    }
-    if (!JSON.parse(localStorage.getItem('plansData'))) {
-      localStorage.setItem('plansData', JSON.stringify([]))
-    }
-  })
 
   return (
     <Fade in>
