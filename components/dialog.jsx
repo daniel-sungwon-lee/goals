@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { AddRounded, CloseRounded } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 
-export default function GoalDialog ({ open, setOpen, openedType, setDataUpdated }) {
+export default function GoalDialog ({ open, setOpen, openedType, setOpenedType, setDataUpdated }) {
   const [goalCategory, setGoalCategory] = useState('')
   const [goal, setGoal] = useState('')
   const [goalDate, setGoalDate] = useState(dayjs())
@@ -50,6 +50,7 @@ export default function GoalDialog ({ open, setOpen, openedType, setDataUpdated 
     setTimeout(() => {
       setDialogLoading(false)
       setOpen(false)
+      setOpenedType('')
       setDataUpdated(true)
       setGoalCategory('')
       setGoal('')
@@ -63,6 +64,7 @@ export default function GoalDialog ({ open, setOpen, openedType, setDataUpdated 
         return
       }
       setOpen(false)
+      setOpenedType('')
      }} PaperProps={{
       sx: {width: '75%', alignItems: 'center', position: 'relative'}
      }}>
@@ -102,6 +104,7 @@ export default function GoalDialog ({ open, setOpen, openedType, setDataUpdated 
             setGoalDate(dayjs())
             setDialogLoading(false)
             setOpen(false)
+            setOpenedType('')
           }}>
             <CloseRounded fontSize="large" />
           </IconButton>
