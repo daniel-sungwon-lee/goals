@@ -94,8 +94,54 @@ main {
 .MuiPickersDay-root {
   font-family: ${AcneSemi.style.fontFamily};
 }
+.MuiPickersDay-root:hover {
+  background-color: rgba(177, 156, 216, 0.08)
+}
+.MuiPickersDay-root:focus {
+  background-color: rgba(177, 156, 216, 0.08)
+}
 .MuiPickersYear-yearButton {
   font-family: ${AcneSemi.style.fontFamily};
+}
+.MuiPickersDay-root.Mui-selected {
+  background-color: #C3B1E1;
+}
+.MuiPickersDay-root.Mui-selected:hover {
+  will-change: background-color;
+  background-color: #B19CD8;
+}
+.MuiPickersDay-root:focus.Mui-selected {
+  background-color: #B19CD8;
+}
+.MuiPickersYear-yearButton.Mui-selected {
+  background-color: #C3B1E1;
+}
+.MuiPickersYear-yearButton.Mui-selected:hover {
+  background-color: #B19CD8;
+}
+.MuiPickersYear-yearButton:focus.Mui-selected {
+  background-color: #B19CD8;
+}
+
+.MuiPickersLayout-actionBar .MuiButton-root {
+  color: #B19CD8;
+}
+
+.MuiMenuItem-root {
+  font-family: ${Acne.style.fontFamily}
+}
+.MuiMenuItem-root.Mui-selected {
+  background-color: rgba(177, 156, 216, 0.08)
+}
+.MuiMenuItem-root.Mui-selected:hover {
+  background-color: rgba(177, 156, 216, 0.08)
+}
+
+
+@media(max-width: 991px) {
+  .wrap {
+    flex-wrap: wrap
+  }
 }
 `
 

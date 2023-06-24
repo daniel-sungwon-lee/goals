@@ -27,7 +27,7 @@ export default function Home() {
       <main className={`container ${Acne.className}`}>
         <h1 className='logo mb-3'>Goals</h1>
 
-        <div className='d-flex justify-content-between mb-4'>
+        <div className='d-flex justify-content-between mb-4 wrap'>
           <Goals type={'Short term'} setOpen={setOpen} setOpenedType={setOpenedType}
           dataUpdated={dataUpdated} setDataUpdated={setDataUpdated} />
           <Goals type={'Medium term'} setOpen={setOpen} setOpenedType={setOpenedType}
