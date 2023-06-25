@@ -13,6 +13,13 @@ export default function Goals ({ type, setOpen, setOpenedType, dataUpdated, setD
   const [show, setShow] = useState(null)
 
   useEffect(() => {
+    if (!JSON.parse(localStorage.getItem('goalsData'))) {
+      localStorage.setItem('goalsData', JSON.stringify([]))
+    }
+    if (!JSON.parse(localStorage.getItem('plansData'))) {
+      localStorage.setItem('plansData', JSON.stringify([]))
+    }
+
     const goalsData = JSON.parse(localStorage.getItem('goalsData'))
     setList(goalsData)
 

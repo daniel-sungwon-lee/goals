@@ -1,6 +1,5 @@
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import localFont from 'next/font/local'
-import { useEffect } from 'react'
 
 const theme = createTheme({
   palette: {
@@ -146,15 +145,6 @@ main {
 `
 
 export default function App({ Component, pageProps }) {
-  useEffect(() => {
-    if (!JSON.parse(localStorage.getItem('goalsData'))) {
-      localStorage.setItem('goalsData', JSON.stringify([]))
-    }
-    if (!JSON.parse(localStorage.getItem('plansData'))) {
-      localStorage.setItem('plansData', JSON.stringify([]))
-    }
-  })
-
   return (
     <>
       <ThemeProvider theme={theme}>
