@@ -51,7 +51,7 @@ body {
 }
 
 ::selection {
-  background: #FF6978;
+  background: #1FC7FF;
   color: white;
 }
 
@@ -138,6 +138,10 @@ main {
 }
 .MuiMenuItem-root.Mui-selected:hover {
   background-color: rgba(177, 156, 216, 0.08) !important;
+}
+
+.MuiChip-root {
+  font-family: ${Acne.style.fontFamily} !important;
 }
 
 

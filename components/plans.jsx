@@ -76,7 +76,7 @@ export default function Plans ({goalId, show}) {
                       <DeleteRounded sx={{fontSize: '16px'}} />
                     </IconButton>
 
-                    <Box className='p-3'>{plan}</Box>
+                    <Box className='p-4'>{plan}</Box>
                   </Paper>
                 </Fade>
               )
