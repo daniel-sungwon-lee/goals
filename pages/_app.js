@@ -76,64 +76,68 @@ main {
 
 
 .MuiTypography-root {
-  font-family: ${Acne.style.fontFamily};
+  font-family: ${Acne.style.fontFamily} !important;
+}
+
+.MuiButtonBase-root.MuiFab-root {
+  font-family: ${AcneSemi.style.fontFamily} !important;
 }
 
 .MuiFormLabel-root {
-  font-family: ${Acne.style.fontFamily}
+  font-family: ${Acne.style.fontFamily} !important;
 }
 .MuiInputBase-input {
-  font-family: ${Acne.style.fontFamily}
+  font-family: ${Acne.style.fontFamily} !important;
 }
 
 .MuiButton-root {
-  font-family: ${Acne.style.fontFamily}
+  font-family: ${Acne.style.fontFamily} !important;
 }
 
 .MuiPickersDay-root {
-  font-family: ${AcneSemi.style.fontFamily};
+  font-family: ${AcneSemi.style.fontFamily} !important;
 }
 .MuiPickersDay-root:hover {
-  background-color: rgba(177, 156, 216, 0.08)
+  background-color: rgba(177, 156, 216, 0.08) !important;
 }
 .MuiPickersDay-root:focus {
-  background-color: rgba(177, 156, 216, 0.08)
+  background-color: rgba(177, 156, 216, 0.08) !important;
 }
 .MuiPickersYear-yearButton {
-  font-family: ${AcneSemi.style.fontFamily};
+  font-family: ${AcneSemi.style.fontFamily} !important;
 }
 .MuiPickersDay-root.Mui-selected {
-  background-color: #C3B1E1;
+  background-color: #C3B1E1 !important;
 }
 .MuiPickersDay-root.Mui-selected:hover {
-  will-change: background-color;
-  background-color: #B19CD8;
+  will-change: background-color !important;
+  background-color: #B19CD8 !important;
 }
 .MuiPickersDay-root:focus.Mui-selected {
-  background-color: #B19CD8;
+  background-color: #B19CD8 !important;
 }
 .MuiPickersYear-yearButton.Mui-selected {
-  background-color: #C3B1E1;
+  background-color: #C3B1E1 !important;
 }
 .MuiPickersYear-yearButton.Mui-selected:hover {
-  background-color: #B19CD8;
+  background-color: #B19CD8 !important;
 }
 .MuiPickersYear-yearButton:focus.Mui-selected {
-  background-color: #B19CD8;
+  background-color: #B19CD8 !important;
 }
 
 .MuiPickersLayout-actionBar .MuiButton-root {
-  color: #B19CD8;
+  color: #B19CD8 !important;
 }
 
 .MuiMenuItem-root {
-  font-family: ${Acne.style.fontFamily}
+  font-family: ${Acne.style.fontFamily} !important;
 }
 .MuiMenuItem-root.Mui-selected {
-  background-color: rgba(177, 156, 216, 0.08)
+  background-color: rgba(177, 156, 216, 0.08) !important;
 }
 .MuiMenuItem-root.Mui-selected:hover {
-  background-color: rgba(177, 156, 216, 0.08)
+  background-color: rgba(177, 156, 216, 0.08) !important;
 }
 
 
