@@ -144,6 +144,11 @@ main {
   font-family: ${Acne.style.fontFamily} !important;
 }
 
+.MuiTooltip-tooltip {
+  font-family: ${AcneSemi.style.fontFamily} !important;
+  background-color: #2e7d32;
+}
+
 
 @media(max-width: 991px) {
   .wrap {

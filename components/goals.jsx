@@ -1,6 +1,7 @@
-import { AddRounded, DeleteRounded, ExpandLessRounded, ExpandMoreRounded } from "@mui/icons-material";
+import { AddRounded, DeleteRounded, ExpandLessRounded, ExpandMoreRounded,
+         LandscapeRounded } from "@mui/icons-material";
 import { Box, Button, Card, CardActions, CardContent, Chip, Collapse, Fab, Fade,
-         IconButton, Paper } from "@mui/material";
+         IconButton, Paper, Tooltip } from "@mui/material";
 import { useEffect, useState } from "react";
 import localFont from 'next/font/local'
 import dayjs from "dayjs";
@@ -36,6 +37,23 @@ export default function Goals ({ type, setOpen, setOpenedType, dataUpdated, setD
     localStorage.setItem('goalsData', JSON.stringify(updatedList))
   }
 
+  const handleAchieved = (category, date, goal, goalType, id) => {
+    const achieved = {
+      category,
+      date,
+      goal,
+      type: goalType,
+      id,
+      achieved: true
+    }
+
+    const index = list.findIndex(g => g.id === id)
+    const updatedList = list.toSpliced(index, 1, achieved)
+    setList(updatedList)
+
+    localStorage.setItem('goalsData', JSON.stringify(updatedList))
+  }
+
   return (
     <>
       <Paper className='paper' sx={list.filter(g => g.type === type).length > 0 ? {height: 'fit-content'} : {}}
@@ -52,18 +70,26 @@ export default function Goals ({ type, setOpen, setOpenedType, dataUpdated, setD
                   </div>
                   {
                     list.map(g => {
-                      const { id, goal, category, date, type: goalType } = g
+                      const { id, goal, category, date, type: goalType, achieved } = g
 
                       if (goalType === type && category === 'health') {
                         return (
                           <Fade key={id} in>
-                            <Card className="mx-4 mb-3" sx={{ background: '#ECB6AC' }}>
+                            <Card className="mx-4 mb-3" sx={achieved ? {
+                              background: 'rgba(0, 0, 0, 0.26)', opacity: '0.5',
+                              textDecoration: 'line-through', position: 'relative'
+                             } : { background: '#ECB6AC', position: 'relative' }}>
                               <CardContent sx={{ textAlign: 'left' }}>
-                                <Box sx={{ textTransform: 'capitalize', color: 'white' }}>
+                                <Box sx={{ textTransform: 'capitalize',
+                                 color: achieved ? 'rgba(0, 0, 0, 0.26)' : 'white' }}>
                                   {category}
                                 </Box>
-                                <Box className='h4'>{goal}</Box>
-                                <Box sx={{ color: dayjs() < dayjs(date) ? '' : '#ff0000' }}>
+                                <Box className='h4' sx={{ color: achieved
+                                 ? 'rgba(0, 0, 0, 0.26) !important' : 'black' }}>
+                                  {goal}
+                                </Box>
+                                <Box sx={achieved ? {color: 'rgba(0, 0, 0, 0.26)'}
+                                 : { color: dayjs() < dayjs(date) ? '' : '#ff0000' }}>
                                   By: {dayjs(date).format('MMMM DD, YYYY')}
                                 </Box>
                               </CardContent>
@@ -77,7 +103,7 @@ export default function Goals ({ type, setOpen, setOpenedType, dataUpdated, setD
                                   fontSize: '16px'}} onClick={() => {
                                     show === id ? setShow(null)
                                                 : setShow(id)
-                                    }}>
+                                    }} disabled={achieved}>
                                   {
                                     show === id ? <>
                                                     <ExpandLessRounded />
@@ -93,6 +119,15 @@ export default function Goals ({ type, setOpen, setOpenedType, dataUpdated, setD
                                   <DeleteRounded />
                                 </IconButton>
                               </CardActions>
+
+                              <Tooltip title='Achieved'>
+                                <IconButton sx={{position: 'absolute', top: '0.5rem',
+                                  right: '0.5rem'}} onClick={
+                                    () => handleAchieved(category, date, goal, goalType, id)
+                                  } disabled={achieved} color="success">
+                                  <LandscapeRounded />
+                                </IconButton>
+                              </Tooltip>
                             </Card>
                           </Fade>
                         )
@@ -112,18 +147,26 @@ export default function Goals ({ type, setOpen, setOpenedType, dataUpdated, setD
                   </div>
                   {
                     list.map(g => {
-                      const { id, goal, category, date, type: goalType } = g
+                      const { id, goal, category, date, type: goalType, achieved } = g
 
                       if (goalType === type && category === 'career') {
                         return (
                           <Fade key={id} in>
-                            <Card className="mx-4 mb-3" sx={{ background: '#ECB6AC' }}>
+                            <Card className="mx-4 mb-3" sx={achieved ? {
+                              background: 'rgba(0, 0, 0, 0.26)', opacity: '0.5',
+                              textDecoration: 'line-through', position: 'relative'
+                             } : { background: '#ECB6AC', position: 'relative' }}>
                               <CardContent sx={{ textAlign: 'left' }}>
-                                <Box sx={{ textTransform: 'capitalize', color: 'white' }}>
+                                <Box sx={{ textTransform: 'capitalize',
+                                 color: achieved ? 'rgba(0, 0, 0, 0.26)' : 'white' }}>
                                   {category}
                                 </Box>
-                                <Box className='h4'>{goal}</Box>
-                                <Box sx={{ color: dayjs() < dayjs(date) ? '' : '#ff0000' }}>
+                                <Box className='h4' sx={{ color: achieved
+                                 ? 'rgba(0, 0, 0, 0.26) !important' : 'black' }}>
+                                  {goal}
+                                </Box>
+                                <Box sx={achieved ? {color: 'rgba(0, 0, 0, 0.26)'}
+                                 : { color: dayjs() < dayjs(date) ? '' : '#ff0000' }}>
                                   By: {dayjs(date).format('MMMM DD, YYYY')}
                                 </Box>
                               </CardContent>
@@ -137,7 +180,7 @@ export default function Goals ({ type, setOpen, setOpenedType, dataUpdated, setD
                                   fontSize: '16px'}} onClick={() => {
                                     show === id ? setShow(null)
                                                 : setShow(id)
-                                    }}>
+                                    }} disabled={achieved}>
                                   {
                                     show === id ? <>
                                                     <ExpandLessRounded />
@@ -153,6 +196,15 @@ export default function Goals ({ type, setOpen, setOpenedType, dataUpdated, setD
                                   <DeleteRounded />
                                 </IconButton>
                               </CardActions>
+
+                              <Tooltip title='Achieved'>
+                                <IconButton sx={{position: 'absolute', top: '0.5rem',
+                                  right: '0.5rem'}} onClick={
+                                    () => handleAchieved(category, date, goal, goalType, id)
+                                  } disabled={achieved} color="success">
+                                  <LandscapeRounded />
+                                </IconButton>
+                              </Tooltip>
                             </Card>
                           </Fade>
                         )
@@ -172,18 +224,26 @@ export default function Goals ({ type, setOpen, setOpenedType, dataUpdated, setD
                   </div>
                   {
                     list.map(g => {
-                      const { id, goal, category, date, type: goalType } = g
+                      const { id, goal, category, date, type: goalType, achieved } = g
 
                       if (goalType === type && category === 'finances') {
                         return (
                           <Fade key={id} in>
-                            <Card className="mx-4 mb-3" sx={{ background: '#ECB6AC' }}>
+                            <Card className="mx-4 mb-3" sx={achieved ? {
+                              background: 'rgba(0, 0, 0, 0.26)', opacity: '0.5',
+                              textDecoration: 'line-through', position: 'relative'
+                             } : { background: '#ECB6AC', position: 'relative' }}>
                               <CardContent sx={{ textAlign: 'left' }}>
-                                <Box sx={{ textTransform: 'capitalize', color: 'white' }}>
+                                <Box sx={{ textTransform: 'capitalize',
+                                 color: achieved ? 'rgba(0, 0, 0, 0.26)' : 'white' }}>
                                   {category}
                                 </Box>
-                                <Box className='h4'>{goal}</Box>
-                                <Box sx={{ color: dayjs() < dayjs(date) ? '' : '#ff0000' }}>
+                                <Box className='h4' sx={{ color: achieved
+                                 ? 'rgba(0, 0, 0, 0.26) !important' : 'black' }}>
+                                  {goal}
+                                </Box>
+                                <Box sx={achieved ? {color: 'rgba(0, 0, 0, 0.26)'}
+                                 : { color: dayjs() < dayjs(date) ? '' : '#ff0000' }}>
                                   By: {dayjs(date).format('MMMM DD, YYYY')}
                                 </Box>
                               </CardContent>
@@ -197,7 +257,7 @@ export default function Goals ({ type, setOpen, setOpenedType, dataUpdated, setD
                                   fontSize: '16px'}} onClick={() => {
                                     show === id ? setShow(null)
                                                 : setShow(id)
-                                    }}>
+                                    }} disabled={achieved}>
                                   {
                                     show === id ? <>
                                                     <ExpandLessRounded />
@@ -213,6 +273,15 @@ export default function Goals ({ type, setOpen, setOpenedType, dataUpdated, setD
                                   <DeleteRounded />
                                 </IconButton>
                               </CardActions>
+
+                              <Tooltip title='Achieved'>
+                                <IconButton sx={{position: 'absolute', top: '0.5rem',
+                                  right: '0.5rem'}} onClick={
+                                    () => handleAchieved(category, date, goal, goalType, id)
+                                  } disabled={achieved} color="success">
+                                  <LandscapeRounded />
+                                </IconButton>
+                              </Tooltip>
                             </Card>
                           </Fade>
                         )
@@ -232,18 +301,26 @@ export default function Goals ({ type, setOpen, setOpenedType, dataUpdated, setD
                   </div>
                   {
                     list.map(g => {
-                      const { id, goal, category, date, type: goalType } = g
+                      const { id, goal, category, date, type: goalType, achieved } = g
 
                       if (goalType === type && category === 'relationships') {
                         return (
                           <Fade key={id} in>
-                            <Card className="mx-4 mb-3" sx={{ background: '#ECB6AC' }}>
+                            <Card className="mx-4 mb-3" sx={achieved ? {
+                              background: 'rgba(0, 0, 0, 0.26)', opacity: '0.5',
+                              textDecoration: 'line-through', position: 'relative'
+                             } : { background: '#ECB6AC', position: 'relative' }}>
                               <CardContent sx={{ textAlign: 'left' }}>
-                                <Box sx={{ textTransform: 'capitalize', color: 'white' }}>
+                                <Box sx={{ textTransform: 'capitalize',
+                                 color: achieved ? 'rgba(0, 0, 0, 0.26)' : 'white' }}>
                                   {category}
                                 </Box>
-                                <Box className='h4'>{goal}</Box>
-                                <Box sx={{ color: dayjs() < dayjs(date) ? '' : '#ff0000' }}>
+                                <Box className='h4' sx={{ color: achieved
+                                 ? 'rgba(0, 0, 0, 0.26) !important' : 'black' }}>
+                                  {goal}
+                                </Box>
+                                <Box sx={achieved ? {color: 'rgba(0, 0, 0, 0.26)'}
+                                 : { color: dayjs() < dayjs(date) ? '' : '#ff0000' }}>
                                   By: {dayjs(date).format('MMMM DD, YYYY')}
                                 </Box>
                               </CardContent>
@@ -257,7 +334,7 @@ export default function Goals ({ type, setOpen, setOpenedType, dataUpdated, setD
                                   fontSize: '16px'}} onClick={() => {
                                     show === id ? setShow(null)
                                                 : setShow(id)
-                                    }}>
+                                    }} disabled={achieved}>
                                   {
                                     show === id ? <>
                                                     <ExpandLessRounded />
@@ -273,6 +350,15 @@ export default function Goals ({ type, setOpen, setOpenedType, dataUpdated, setD
                                   <DeleteRounded />
                                 </IconButton>
                               </CardActions>
+
+                              <Tooltip title='Achieved'>
+                                <IconButton sx={{position: 'absolute', top: '0.5rem',
+                                  right: '0.5rem'}} onClick={
+                                    () => handleAchieved(category, date, goal, goalType, id)
+                                  } disabled={achieved} color="success">
+                                  <LandscapeRounded />
+                                </IconButton>
+                              </Tooltip>
                             </Card>
                           </Fade>
                         )
