@@ -146,7 +146,7 @@ main {
 
 .MuiTooltip-tooltip {
   font-family: ${AcneSemi.style.fontFamily} !important;
-  background-color: #2e7d32;
+  background-color: #2e7d32 !important;
 }
 
 
