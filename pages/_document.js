@@ -5,8 +5,12 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        {/* eslint-disable-next-line @next/next/no-title-in-document-head */}
         <title>Goals</title>
         <meta name="description" content="A goal without a plan is just a dream; Goals helps you get closer to achieving your dreams." />
+        <meta property='og:description' content='A goal without a plan is just a dream; Goals helps you get closer to achieving your dreams.' />
+        <meta property='og:image' content='/goals.png' />
+        <meta property='og:url' content='https://goalsss.netlify.app/' />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/goals.png" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"></link>
